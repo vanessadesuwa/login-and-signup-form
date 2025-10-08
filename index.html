@@ -8,9 +8,78 @@
   </head>
   <body>
     <main>
-      <div class="left">
-        <div class="logo"><p>Logo</p></div>
+      <header class="app-header">
+        <div class="header-container">
+          <!-- Logo / Site Title -->
+          <a href="#" class="logo-link" aria-label="Go to YourBrand homepage">
+            <!-- Simple SVG Logo Icon -->
+            <svg
+              class="logo-icon"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 2a8 8 0 100 16A8 8 0 0010 2zM9 7a1 1 0 012 0v5a1 1 0 11-2 0V7z"
+              ></path>
+            </svg>
+            <span class="logo-text">BrandName</span>
+          </a>
 
+          <!-- Navigation and Mobile Toggle Container -->
+          <nav aria-label="Primary navigation">
+            <!-- Desktop Navigation Links -->
+            <ul class="desktop-nav-links">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Help</a></li>
+              <li><a href="#">Contact</a></li>
+
+              <!-- Highlighted Login Button -->
+              <li>
+                <a
+                  href="#"
+                  class="cta-button"
+                  aria-label="Login to your account"
+                >
+                  Login
+                </a>
+              </li>
+            </ul>
+
+            <!-- Mobile Menu Icon (Hamburger) and Checkbox -->
+            <div class="hamburger-menu-icon" aria-label="Toggle mobile menu">
+              <svg
+                class="hamburger-icon-svg"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </div>
+          </nav>
+        </div>
+
+        <div id="mobile-menu-links" class="mobile-nav-menu">
+          <ul class="mobile-nav-list">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Contact</a></li>
+            <li>
+              <a href="#" class="mobile-cta-button"> Sign In </a>
+            </li>
+          </ul>
+        </div>
+      </header>
+
+      <div class="left">
         <form action="" class="register">
           <div class="top-form">
             <div class="title">

@@ -8,6 +8,13 @@
 }
 
 :root {
+  --primary-color: hsl(220, 90%, 56%); /* Accent blue */
+  --text-color: #1f2937; /* Dark text */
+  --background-color: #ffffff;
+  --hover-color: hsl(220, 90%, 65%);
+  --header-height: 80px;
+  --desktop-padding-x: 3rem;
+  --mobile-padding-x: 1rem;
   --title-color: hsl(191, 80%, 8%);
   --image-background: hsl(23, 100%, 94%);
   --logo-color: hsl(227, 83%, 59%);
@@ -21,6 +28,120 @@
   --button-hover-color: #1e1e1e;
   --input-background: hsl(0, 0%, 98%);
   --logo-font: "Poppins", sans-serif;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.header-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 var(--desktop-padding-x);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+.logo-link:hover {
+  transform: scale(1.03);
+}
+.logo-icon {
+  width: 24px;
+  height: 24px;
+  fill: var(--primary-color);
+}
+
+/* --- 4. Desktop Navigation (Links & CTA) --- */
+.desktop-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px; /* Space between links */
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.desktop-nav-links a {
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+.desktop-nav-links a:hover {
+  color: var(--primary-color);
+  /* Subtle background hover effect */
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* Highlighted CTA Button Styling */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  background: var(--button-color);
+  color: #fff !important;
+}
+.cta-button:hover,
+.cta-button:focus {
+  background-color: #1e1e1e !important;
+}
+
+/* --- 5. CSS-Only Mobile Menu Logic --- */
+
+.mobile-nav-menu {
+  display: none;
+}
+
+/* Hamburger Icon Base Style */
+.hamburger-menu-icon {
+  display: none; /* Hidden on desktop */
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+.hamburger-menu-icon:hover {
+  background-color: #f3f4f6;
+}
+.hamburger-icon-svg {
+  width: 24px;
+  height: 24px;
+  color: var(--text-color);
 }
 
 .login {
@@ -51,7 +172,7 @@ main {
   width: 50%;
   min-height: 100vh;
   height: auto;
-  padding: 2rem 7rem;
+  padding: 6rem 7rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -340,7 +461,7 @@ main {
     width: 100%;
   }
   .left {
-    padding: 2rem 5rem;
+    padding: 6rem 5rem;
   }
 }
 
@@ -357,18 +478,50 @@ main {
 
   .left {
     width: 100%;
-    padding: 2rem 7rem;
+    padding: 6rem 7rem;
   }
 }
 @media (max-width: 768px) {
   .left {
-    padding: 2rem 4rem;
+    padding: 6rem 4rem;
+  }
+  .header-container {
+    padding: 0 var(--mobile-padding-x);
+  }
+  .desktop-nav-links {
+    display: none;
+  }
+  .hamburger-menu-icon {
+    display: block !important;
+  }
+  .mobile-nav-menu {
+    position: absolute;
+    right: 0;
+    margin: 0 2rem 0 0;
+    border: 1px solid var(--input-cont-color);
+    border-radius: 1rem;
+    background-color: #fff;
+  }
+  .mobile-nav-menu.display {
+    display: block;
+  }
+  .mobile-nav-list li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 5rem;
+    text-decoration: none;
+    color: var(--normal-text-color);
+  }
+  .mobile-nav-list li a:hover {
+    background-color: var(--input-background);
+    color: var(--button-color);
   }
 }
 
 @media (max-width: 600px) {
   .left {
-    padding: 2rem 2rem;
+    padding: 6rem 2rem;
   }
   .names,
   .social-buttons {
