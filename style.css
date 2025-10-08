@@ -245,7 +245,7 @@ main {
 .email label {
   font-size: 0.75rem;
   color: var(--normal-text-color);
-  font-weight: 500;
+  font-weight: 650;
 }
 
 .name input,
