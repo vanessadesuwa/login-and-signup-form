@@ -41,7 +41,7 @@ ul {
   top: 0;
   left: 0;
   width: 100%;
-  height: var(--header-height);
+  /* height: var(--header-height); */
   z-index: 1000;
   background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(8px);
@@ -52,10 +52,8 @@ ul {
 }
 
 .header-container {
-  max-width: 1280px;
-  margin: 0 auto;
-  height: 100%;
-  padding: 0 var(--desktop-padding-x);
+  width: 100%;
+  padding: 1rem var(--desktop-padding-x) ;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -222,6 +220,10 @@ main {
 
 .actual-form {
   row-gap: 1.8rem;
+}
+
+.signup-gap {
+  row-gap: 1rem; /* Reduced gap specifically for signup form */
 }
 
 .names {
@@ -535,4 +537,58 @@ main {
   .title {
     align-items: center;
   }
+}
+
+/* Validation Styles */
+/* Validation Styles */
+/* Validation Styles */
+.error-message {
+  color: #ff3333;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: none; /* Hide by default, show when active */
+}
+
+.error-message:not(:empty) {
+  display: block; /* Show only when there is text */
+}
+
+.input-error {
+  border-color: #ff3333 !important;
+}
+
+.password-checklist {
+  font-size: 0.75rem;
+  color: var(--deam-text);
+  padding-left: 0;
+  display: none; /* Hide by default, show on focus */
+  /* margin-top removed to reduce gap */
+}
+
+.password-checklist li {
+  margin-bottom: 0.2rem;
+  display: flex;
+  align-items: center;
+  list-style: none; /* Ensure no default bullets */
+}
+
+.password-checklist li::before {
+  content: "•"; /* Bullet point */
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+.password-checklist li.valid-check {
+  display: none; /* Hide when satisfied */
+}
+
+/* Button Disabled State */
+.button-cont button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.button-cont button:disabled:hover {
+  background-color: #cccccc;
 }
