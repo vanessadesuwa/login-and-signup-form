@@ -299,14 +299,49 @@ if (firstNameInput) {
         // Safety check (should be disabled anyway)
         if (createAccountBtn.hasAttribute("disabled")) return;
 
-        const originalText = createAccountBtn.textContent;
-        createAccountBtn.textContent = "Sending...";
         createAccountBtn.disabled = true; // Prevent double submit
+        const originalText = "CREATE ACCOUNT";
+        
+        // Animated "Creating Account..." text
+        let dots = 0;
+        createAccountBtn.textContent = "CREATING ACCOUNT";
+        const dotInterval = setInterval(() => {
+            dots = (dots + 1) % 4; // Cycle 0-3
+            let text = "CREATING ACCOUNT";
+            for(let i=0; i<dots; i++) text += ".";
+            createAccountBtn.textContent = text;
+        }, 500);
 
         setTimeout(() => {
-            alert("Account Created Successfully!");
+            // Stop animation
+            clearInterval(dotInterval);
+            
+            // Show Success Notification (Toast)
+            const toast = document.getElementById("toast-notification");
+            if(toast) {
+                toast.classList.remove("hidden");
+                // Small delay to allow 'display: block' to apply before fading in (if using display:none)
+                requestAnimationFrame(() => {
+                    toast.classList.add("show-toast");
+                });
+                
+                // Hide Toast after 2 seconds and Redirect
+                setTimeout(() => {
+                    toast.classList.remove("show-toast");
+                    setTimeout(() => {
+                        toast.classList.add("hidden");
+                        // Redirect to Login Page
+                        window.location.href = "login.html";
+                    }, 300); // Wait for fade out transition
+                }, 2000); // Shortened to 2 seconds for quicker redirect
+            } else {
+                 alert("Account Created Successfully!"); // Fallback
+                 window.location.href = "login.html";
+            }
+
+            // Reset Button (Optional since we redirect, but good practice)
             createAccountBtn.textContent = originalText;
             createAccountBtn.disabled = false;
-        }, 2000);
+        }, 2000); // 2 second delay
     });
 }
